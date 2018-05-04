@@ -33,7 +33,10 @@ func main() {
 	})
 
 	// step 1. Deploy a new awesome contract for the binding demo
-	r.POST("deploy", func(c *gin.Context) {
+	r.POST("deploy/:name/:symbol", func(c *gin.Context) {
+
+		_name := c.Params.ByName("name")
+		_symbol := c.Params.ByName("symbol")
 
 		txOpt, err := bind.NewTransactor(strings.NewReader(key), pwd)
 		if err != nil {
@@ -41,9 +44,8 @@ func main() {
 			return
 		}
 
-		_initialAmount := big.NewInt(100000000000)
-		_tokenName := "IPL"
-		_address, _, _, err := DeployHumanStandardToken(txOpt, client, _initialAmount, _tokenName, 10, "IPLS")
+		_initialAmount := big.NewInt(1000000000000)
+		_address, _, _, err := DeployHumanStandardToken(txOpt, client, _initialAmount, _name, 10, _symbol)
 		if err != nil {
 			c.String(200, err.Error())
 			return

@@ -12,11 +12,11 @@ import (
 )
 
 // config address info
-const key = `{"address":"73e091f128342f54595f6bde83970cb5ec84a6bf","crypto":{"cipher":"aes-128-ctr","ciphertext":"005ba9999e7be29352eb40b95734596c4ecf4ad26ea65b0d1ca28521fa7a2d80","cipherparams":{"iv":"c2203f266a4f442508733a30f001274b"},"kdf":"scrypt","kdfparams":{"dklen":32,"n":262144,"p":1,"r":8,"salt":"600353ee2885f0238d912734a0638869b4ff73f50d3a839a1dfd800bed7051de"},"mac":"c4dcc6de182c9a30aa233883785b06a150000349340f504ee827068ba791fa60"},"id":"753f08b0-04f9-4b9b-8391-070583f6d13d","version":3}`
-const pwd = `a1111111`
+const key = `{"address":"004ec07d2329997267ec62b4166639513386f32e","crypto":{"cipher":"aes-128-ctr","cipherparams":{"iv":"87b493d4dd7f328e4c3d4400c306b552"},"ciphertext":"4853877ee45b1ec41dbedc2d237260aef2291d5dca6f640e053e40cb0686343d","kdf":"pbkdf2","kdfparams":{"c":10240,"dklen":32,"prf":"hmac-sha256","salt":"e992921213cb010c901f368b761b91cfab956ec6a1371617af985b1fe5af791c"},"mac":"43c63c503b872f0a9312ac5c5c24a0039edcb708c54e289e6db096341b80c851"},"id":"ca5df0e3-c4c5-9b56-0457-9e23e47b3221","meta":"{}","name":"","version":3}`
+const pwd = `user`
 
 func main() {
-	client, err := ethclient.Dial("/home/eric/.ethereum/geth.ipc")
+	client, err := ethclient.Dial("http://localhost:8540")
 	if err != nil {
 		fmt.Println("Failed to connect to the Ethereum client:", err)
 		os.Exit(0)
